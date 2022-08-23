@@ -1,0 +1,94 @@
+{
+  "nodes": {
+    "amcl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1613391628,
+        "narHash": "sha256-7DFC9MKXi28x59tZPxK3biRSbcKOm2KgLKq5kw1E+Xw=",
+        "owner": "apache",
+        "repo": "incubator-milagro-crypto-c",
+        "rev": "7e8df018b9ce0035abdd7589dbca676821594bb3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "apache",
+        "repo": "incubator-milagro-crypto-c",
+        "type": "github"
+      }
+    },
+    "dta": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1576145964,
+        "narHash": "sha256-GeXxI/3dP88pjcCd2kTnRxRiEV0ckjLDduTjkz/wDR8=",
+        "owner": "apache",
+        "repo": "incubator-milagro-dta",
+        "rev": "2c2efe10124205fee885fffa8f7dbad83fcc1050",
+        "type": "github"
+      },
+      "original": {
+        "owner": "apache",
+        "repo": "incubator-milagro-dta",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "liboqs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661279113,
+        "narHash": "sha256-qfglJ/3RwUw//NeIAcmKJgtAixOXF7jkBVS8nigeqEs=",
+        "owner": "s-vaes",
+        "repo": "liboqs",
+        "rev": "c1f067e56d0c6398c83b98920b3a167edb730d89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "s-vaes",
+        "ref": "pqnist",
+        "repo": "liboqs",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1661187878,
+        "narHash": "sha256-/wCqoQB1BsaVi4nb8Iz0PreeBNMTim0p78NLtyWejFE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "52527082ea267fe486f0648582d57c85486b2031",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-22.05",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "amcl": "amcl",
+        "dta": "dta",
+        "flake-utils": "flake-utils",
+        "liboqs": "liboqs",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
