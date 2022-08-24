@@ -1,5 +1,5 @@
 # When you use pkgs.callPackage, parameters here will be filled with packages from Nixpkgs (if there's a match)
-{ lib, stdenv, fetchFromGitHub, cmake, liboqs, amcl, ... } @ args:
+{ lib, stdenv, fetchFromGitHub, cmake, openssl, liboqs, amcl, ... } @ args:
 
 stdenv.mkDerivation rec {
   # Specify package name and version
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
 
     # Add CMake to the building environment, to generate Makefile with it
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ liboqs amcl ];
+  buildInputs = [ liboqs amcl openssl ];
   
   installPhase = ''
     make install
@@ -48,8 +48,8 @@ stdenv.mkDerivation rec {
     '';
 
   meta = {
-    description = ".";
-    homepage = https://github.com/apache/incubator-milagro-dta/tree/develop/libs/crypto/libpqnist;
+    description = "The Apache Milagro (Incubating) Decentralized Trust Authority (D-TA) is a collaborative key management server.";
+    homepage = https://github.com/apache/incubator-milagro-dta;
     license = lib.licenses.asl20;
     # maintainers = [ maintainers.svaes ];
   };

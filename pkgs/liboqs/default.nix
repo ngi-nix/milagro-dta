@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
   # This disables some automatic fixes applied to CMake-based software
   dontFixCmake = true;
 
-  # Add CMake to the building environment, to generate Makefile with it
+  # --- Autotools ---
   nativeBuildInputs = [ autoreconfHook openssl ];
   
   autoreconfPhase = ''
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
   mkdir -p /tmp/liboqs
-  ./configure --prefix=/tmp/liboqs --disable-shared --disable-aes-ni --disable-kem-bike --disable-kem-frodokem --disable-kem-newhope --disable-kem-kyber --disable-sig-qtesla
+  ./configure --prefix=/tmp/liboqs --disable-shared --disable-aes-ni --disable-kem-bike --disable-kem-frodokem --disable-kem-newhope --disable-kem-ntru --disable-kem-kyber --disable-sig-qtesla --disable-sig-dilithium --without-openssl
   make clean
   make -j
   '';
@@ -43,11 +43,45 @@ stdenv.mkDerivation rec {
   installPhase = ''
   make install
   mkdir -p $out;
-  mkdir -p $out/lib;
   cp -r /tmp/liboqs/include $out;
   cp -r /tmp/liboqs/lib $out;
   '';
-  # stdenv.mkDerivation automatically does the rest for you
+  # --- ---
+
+  # --- CMake ---
+  # nativeBuildInputs = [ cmake ninja openssl ];
+  # buildShareLib = false;
+  # debug = false;
+  # buildOnlyLib = false;
+  # distBuild = false;
+  # useOpenSSL = false;
+  # generic = false;
+  # installPrefix = ".";
+
+  # cmakeFlags = [
+  #   "-DCMAKE_INSTALL_PREFIX=${installPrefix}"
+  #   "-DBUILD_SHARED_LIBS=${if buildShareLib then "ON" else "OFF"}"
+  #   "-DCMAKE_BUILD_TYPE=${if debug then "Debug" else "Release"}"
+  #   "-DOQS_BUILD_ONLY_LIB=${if buildOnlyLib then "ON" else "OFF"}"
+  #   "-DOQS_DIST_BUILD=${if distBuild then "ON" else "OFF"}"
+  #   "-DOQS_USE_OPENSSL=${if useOpenSSL then "ON" else "OFF"}"
+  #   "-DOQS_OPT_TARGET=${if generic then "generic" else "auto"}"
+  #   "-DOQS_ENABLE_KEM_BIKE=OFF"
+  #   "-DOQS_ENABLE_KEM_FRODOKEM=OFF"
+  #   "-DOQS_ENABLE_KEM_NEWHOPE=OFF"
+  #   "-DOQS_ENABLE_KEM_KYBER=OFF"
+  #   "-DOQS_ENABLE_SIG_QTESLA=OFF"
+  #   "-DOQS_ENABLE_KEM_SIKE=ON"
+  #   "-GNinja"
+  # ];
+
+  # installPhase = ''
+  # ninja install
+  # mkdir -p $out;
+  # mkdir -p $out/lib;
+  # cp -r include $out;
+  # cp -r lib $out;
+  # '';
 
   meta = {
     description = "liboqs is an open source C library for quantum-safe cryptographic algorithms.";

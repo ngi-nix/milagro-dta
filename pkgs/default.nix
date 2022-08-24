@@ -24,6 +24,15 @@ inputs: versions: _: final: rec {
       repo = inputs.dta;
       version = versions.dta;
     });
+
+    dta = (final.callPackage ./dta {
+      liboqs = dta.liboqs;
+      amcl = dta.amcl;
+      pqnist = dta.pqnist;
+    }).overrideAttrs (oldAttrs: {
+      src = inputs.dta;
+      version = versions.dta;
+    });
   };
 
   # default = dta.dta;
